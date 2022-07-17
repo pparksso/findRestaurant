@@ -171,26 +171,28 @@
       });
     };
 
+    const search = () => {
+      const value = searchInput.value;
+      regionSearch(value);
+      let tempTitle = "";
+      tempTitle = `<span>${value}</span>의 맛집`;
+      hereTitle.innerHTML = tempTitle;
+    };
+
     //검색어를 치고 엔터를 쳤을 때
-    searchInput.addEventListener("keydown", function (e) {
+    searchInput.addEventListener("keydown", (e) => {
       if (e.keyCode === 13) {
-        regionSearch(this.value);
-        let tempTitle = "";
-        tempTitle = `<span>${this.value}</span>의 맛집`;
-        hereTitle.innerHTML = tempTitle;
+        search();
       }
     });
 
     // 검색어를 치고 버튼을 눌렀을 때
-    searchBtn.addEventListener("click", function (e) {
+    searchBtn.addEventListener("click", () => {
       const value = searchInput.value;
       if (value === "") {
         alert("검색어를 입력해주세요");
       } else {
-        regionSearch(value);
-        let tempTitle = "";
-        tempTitle = `<span>${value}</span>의 맛집`;
-        hereTitle.innerHTML = tempTitle;
+        search();
       }
     });
 

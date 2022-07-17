@@ -1,0 +1,78 @@
+@mixin ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+// 함수 사용법!!! 연산할 때는 () 사용!
+// 함수 사용 시 매개변수를 안쓸 때를 대비해 변수 옆에 안쓸 때 나갈 수를 써줌
+@mixin multiEllipsis($line: 3, $lineHeight: 1.5) {
+  line-height: $lineHeight;
+  height: ($lineHeight * 1em * $line);
+  overflow: hidden;
+  display: -webkit-box;
+  /* autoprefixer: off */
+  -webkit-line-clamp: $line;
+  -webkit-box-orient: vertical;
+}
+
+// @mixin absVerticalCenter {
+//   position: absolute;
+//   top: 50%;
+//   transform: translateY(-50%);
+// }
+
+// @mixin absHorizontalCenter {
+//   position: absolute;
+//   left: 50%;
+//   transform: translateX(-50%);
+// }
+// @mixin absBothCenter {
+//   position: absolute;
+//   top: 50%;
+//   left: 50%;
+//   transform: translate(-50%, -50%);
+// }
+
+// 위의 3개를 한번에!
+// if
+@mixin absCenter($horizontal: true, $vertical: true) {
+  position: absolute;
+  @if ($horizontal and $vertical) {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  } @else if ($horizontal) {
+    left: 50%;
+    transform: translateX(-50%);
+  } @else if ($vertical) {
+    top: 50%;
+    transform: translateY(50%);
+  }
+}
+//for
+@mixin longShadow($shadowColor: rgba(0, 0, 0, 1), $limit: 20) {
+  $shadow: "";
+  @for $i from 1 to ($limit - 1) {
+    $shadow: $shadow + $i + "px " + $i + "px 0px " + $shadowColor + " ,";
+  }
+  $shadow: $shadow + $limit + "px " + $limit + "px 0px " + $shadowColor;
+  $shadow: unquote($shadow);
+  text-shadow: $shadow;
+}
+// unquote : 쌍따옴표 없앨 때 사용
+// 변수를 연결할 때는 + 사용!!!
+// 스트링을 감쌀 때 "" 사용해서 감싸줘야됨 그 안에 공백도 포함됨!!!
+
+@mixin pseudo($display: block, $pos: absolute, $content: "") {
+  content: $content;
+  display: $display;
+  position: $pos;
+}
+
+@mixin box($w: 10px, $h: 10px, $bg: #000) {
+  display: block;
+  width: $w;
+  height: $h;
+  background-color: $bg;
+}
