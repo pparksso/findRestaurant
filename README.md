@@ -6,7 +6,7 @@
 <p>걸린 시간 : 22.07.14 - 22.07.17(4days)</p>
 <p>사용 기술 : javescript<p>
 <ol>
-<p>개선 사항</p>
+<p>수정해야할 부분</p>
 <li>fetch가 하나만 되고 나머지는 json으로 파싱한 다음단이 undefined뜨는 현상 원인 찾아 axios를 fetch로 다시 바꾸기</li>
 <li>순위가 랜덤으로 나오는 부분 원인 찾아 수정</li>
 <li>네이버 API CORS 오류 해결 후 네이버 API로 바꿔서 음식점 설명 넣기</li></ol>
