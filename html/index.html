@@ -141,7 +141,6 @@
         },
       }).then((res) => {
         const searchArr = res.data.documents;
-        console.log(searchArr);
         let tempSearchList = "";
         for (let i = 0; i < searchArr.length; i++) {
           axios(`https://dapi.kakao.com/v2/search/image.json?query=${searchArr[i].place_name}&size=1`, {
@@ -150,7 +149,6 @@
               Authorization: `KakaoAK ${AppKey}`,
             },
           }).then((res) => {
-            console.log(searchArr);
             const imgEl = res.data.documents;
             tempSearchList += `<li>
                 <a href=${searchArr[i].place_url} target=_blank  class="imgBox"><img src="${imgEl[0].thumbnail_url}"alt=""></a>
@@ -171,6 +169,7 @@
       });
     };
 
+    //검색 이벤트 후 실행되는 함수
     const search = () => {
       const value = searchInput.value;
       regionSearch(value);
