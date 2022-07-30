@@ -2,7 +2,6 @@ const searchInput = document.querySelector("#search");
 const searchBtn = document.querySelector(".searchBtn");
 const hereTitle = document.querySelector(".here");
 const list = document.querySelector("#listWrap .list");
-const AppKey = `2e6a20941c33edee099bf5c82b0373bc`;
 
 // 페이지가 로딩 되자 마자 gps함수 실행
 window.onload = gps();
